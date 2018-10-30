@@ -1,0 +1,20 @@
+<h1><i class="fas fa-tasks"></i> My Tasks </h1>
+<ul>
+<% @tasks_list.each do |task| %>
+<% if task.completed == true %>
+  <li>
+  <i class="far fa-check-square"></i>
+  <%= link_to task_path(task) do %>
+  <%= task.title.capitalize %></li>
+  <% end %>
+<% elsif task.title.length >= 1 %>
+  <li>
+  <i class="far fa-square"></i>
+  <%= link_to task_path(task) do %>
+  <%= task.title.capitalize %></li>
+<% end %>
+<% end %>
+<% end %>
+</ul>
+<h3><i class="fas fa-plus"></i> <%= link_to "Create Task", new_task_path %></h3>
+

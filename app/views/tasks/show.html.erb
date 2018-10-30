@@ -1,0 +1,21 @@
+<h1> <%= @task.title %></h1>
+<% if @task.title.length <= 1 %>
+  <h1> Your must give your task a name.
+    <%= link_to new_task_path do %>
+      <i class="fas fa-pencil-alt"></i>
+    <% end %>
+  </h1>
+<% else %>
+  <h3 class="task-details"><%= @task.details %></h3>
+<% if @task.completed == true %>
+  <h4><i class="far fa-check-square"></i> The task is completed</h4>
+<% else %>
+  <h4><i class="far fa-square"></i> You need to complete this task </h4>
+<% end %>
+<h3><%= link_to "Update task", edit_task_path %></h3>
+<h3><%= link_to "Delete task", task_path(@task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+</h3>
+<% end %>
+<h3><%= link_to "Back to lists", tasks_path %></h3>
